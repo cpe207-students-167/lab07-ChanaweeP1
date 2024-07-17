@@ -3,11 +3,11 @@
 
 ### ป้อนข้อมูลนักศึกษา
 
-รหัส นศ.:
+รหัส นศ.:660610744 
 
-ชื่อ-สกุล :
+ชื่อ-สกุล :ชนวีร์ ปินทะยา
 
-GitHub Page URL :
+GitHub Page URL :https://github.com/cpe207-students-167/lab07-ChanaweeP1
 
 ---
 

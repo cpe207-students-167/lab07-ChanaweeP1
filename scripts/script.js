@@ -1,47 +1,116 @@
 // create reference for input fields.
 const firstNameInput = document.querySelector("#first-name-input");
 const lastNameInput = document.querySelector("#last-name-input");
+const emailInput = document.querySelector("#email-input");
+const passwordInput = document.querySelector("#password-input");
+const confirmpasswordInput = document.querySelector("#confirm-password-input");
 
 // create reference for buttons.
 const submitBtn = document.querySelector("#submit-btn");
+const ResetBtn = document.querySelector("#reset-btn");
 
 // simple email validation
 function validateEmail(email) {
-  var atPos = email.indexOf("@");
-  var dotPos = email.lastIndexOf(".");
-  return atPos > 0 && dotPos > atPos + 1 && dotPos < email.length - 1;
+    var atPos = email.indexOf("@");
+    var dotPos = email.lastIndexOf(".");
+    return atPos > 0 && dotPos > atPos + 1 && dotPos < email.length - 1;
 }
 
 // add callback function for firstNameInput.onkeyup event
 firstNameInput.onkeyup = () => {
-  firstNameInput.classList.remove("is-valid");
-  firstNameInput.classList.remove("is-invalid");
+    firstNameInput.classList.remove("is-valid");
+    firstNameInput.classList.remove("is-invalid");
 };
 
 // add callback functions for other input events.
-// (lastname, email, password, confirm password)
+lastNameInput.onkeyup = () => {
+    lastNameInput.classList.remove("is-valid");
+    lastNameInput.classList.remove("is-invalid");
+};
+
+emailInput.onkeyup = () => {
+    emailInput.classList.remove("is-valid");
+    emailInput.classList.remove("is-invalid");
+};
+
+passwordInput.onkeyup = () => {
+    passwordInput.classList.remove("is-valid");
+    passwordInput.classList.remove("is-invalid");
+};
+
+confirmpasswordInput.onkeyup = () => {
+    confirmpasswordInput.classList.remove("is-valid");
+    confirmpasswordInput.classList.remove("is-invalid");
+};
+// lastname, email, password, confirm password
 
 // add callback function for submit button.
 submitBtn.onclick = () => {
-  isFirstNameOk = false;
+    isFirstNameOk = false;
+    isLastNameOk = false;
+    isEmailOk = false;
+    isPasswordOk = false;
+    isConfirmPasswordOk = false;
 
-  // validate first name
-  if (firstNameInput.value !== "CPE207") {
-    firstNameInput.classList.add("is-invalid");
-  } else {
-    firstNameInput.classList.add("is-valid");
-    isFirstNameOk = true;
-  }
 
-  // validate last name
+    // validate first name
+    if (firstNameInput.value == "") {
+        firstNameInput.classList.add("is-invalid");
+    } else {
+        firstNameInput.classList.add("is-valid");
+        isFirstNameOk = true;
+    }
 
-  // validate email
+    // validate last names
+    if (lastNameInput.value == "") {
+        lastNameInput.classList.add("is-invalid");
+    } else {
+        lastNameInput.classList.add("is-valid");
+        isLastNameOk = true;
+    }
 
-  // validate password
+    // validate email
+    if (validateEmail(emailInput.value) == false) {
+        emailInput.classList.add("is-invalid");
+    } else {
+        emailInput.classList.add("is-valid");
+        isEmailOk = true;
+    }
 
-  // validate confirm password
+    // validate password
+    if (passwordInput.value.length < 6) {
+        passwordInput.classList.add("is-invalid");
+    } else {
+        passwordInput.classList.add("is-valid");
+        isPasswordOk = true;
+    }
 
-  if (isFirstNameOk) alert("Registered successfully");
+    // validate confirm password
+    if (passwordInput.value != confirmpasswordInput.value || confirmpasswordInput.value == " ") {
+        confirmpasswordInput.classList.add("is-invalid");
+    } else {
+        confirmpasswordInput.classList.add("is-valid");
+        isConfirmPasswordOk = true;
+    }
+
+    if (isFirstNameOk && isLastNameOk && isEmailOk && isPasswordOk && isConfirmPasswordOk) alert("Registered successfully");
 };
 
 // add callback function for Reset button.
+ResetBtn.onclick = () => {
+    firstNameInput.value = "";
+    lastNameInput.value = "";
+    emailInput.value = "";
+    passwordInput.value = "";
+    confirmpasswordInput.value = "";
+    firstNameInput.classList.remove("is-valid");
+    firstNameInput.classList.remove("is-invalid");
+    lastNameInput.classList.remove("is-valid");
+    lastNameInput.classList.remove("is-invalid");
+    emailInput.classList.remove("is-valid");
+    emailInput.classList.remove("is-invalid");
+    passwordInput.classList.remove("is-valid");
+    passwordInput.classList.remove("is-invalid");
+    confirmpasswordInput.classList.remove("is-valid");
+    confirmpasswordInput.classList.remove("is-invalid");
+};
